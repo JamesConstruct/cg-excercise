@@ -1,8 +1,6 @@
 # Generating Read-depth Plot
 I've firstly indexed the [reference genome](http://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/) using **bwa**.
 
-> All the steps are in *pipeline.sh* 
-
 `bwa index chrX.fa.gz`
 
 Aligned the reads:
@@ -25,30 +23,30 @@ To visualize the data I created a short python script *plot.py* using  **seaborn
 
 `python3 plot.py results-wt/output.txt "Control Sample" control.png -s`
 
-![Simulated Medulloblastoma Sample](graphs/SimulatedMedulloblastoma.png)
-![Control Sample](graphs/ControlSample.png)
+![Simulated Medulloblastoma Sample](graphs/SimulatedMedulloblastoma.png "Simulated Medulloblastoma Sample")
+![Control Sample](graphs/ControlSample.png "Control Sample")
 
-Using my script I also generated graphs for mean, meadian and 95th quantile per 100 bp.
+Using my script I also generated graphs for mean, meadian and 95th percentile per 100 bp.
 
-`python3 plot.py output.txt "..." output.png -n 100 quantile 0.95`
+`python3 plot.py output.txt "Simulated Medulloblastoma Sample" output.png -n 100 quantile 0.95`
 
 > See *graphs.sh* for all the commands.
 
-![Simulated Medulloblastoma Sample mean per 100 bp](graphs/sms100mean.jpeg "An image!")
+![Simulated Medulloblastoma Sample mean per 100 bp](graphs/sms100mean.jpeg "Simulated Medulloblastoma Sample mean per 100 bp")
 
-![Control sample mean per 100 bp](graphs/cs100mean.jpeg "An image!")
+![Control sample mean per 100 bp](graphs/cs100mean.jpeg "Control sample mean per 100 bp")
 
-![Simulated medulloblastoma sample median per 100 bp](graphs/sms100med.jpeg "An image!")
+![Simulated medulloblastoma sample median per 100 bp](graphs/sms100med.jpeg "Simulated medulloblastoma sample median per 100 bp")
 
-![Control sample median per 100 bp](graphs/cs100med.jpeg "An image!")
+![Control sample median per 100 bp](graphs/cs100med.jpeg "Control sample median per 100 bp")
 
-![Simulated medulloblastoma sample 0.95 quantile](graphs/sms100q95.jpeg "An image!")
+![Simulated medulloblastoma sample 0.95 quantile](graphs/sms100q95.jpeg "Simulated medulloblastoma sample 0.95 quantile")
 
-![Control sample 0.95 quantile](graphs/cs100q95.jpeg "An image!")
+![Control sample 0.95 quantile](graphs/cs100q95.jpeg "Control sample 0.95 quantile")
 
-![Simulated medulloblastoma sample mean per 1 kbp](graphs/sms10kmean.jpeg)
+![Simulated medulloblastoma sample mean per 1 kbp](graphs/sms10kmean.jpeg "Simulated medulloblastoma sample mean per 1 kbp")
 
-![Control sample 1 kpb mean](graphs/cs10kmean.jpeg)
+![Control sample 1 kpb mean](graphs/cs10kmean.jpeg "Control sample 1 kpb mean")
 
 
 # SV Calling
@@ -70,8 +68,8 @@ Using **sniffles** I performed the SV calling. I dropped the threshold down to 5
 | DUP | 8 | chrX | 34829036 | 34829138 | 102 |
 | DEL | 9 | chrX | 38592550 | 38592587 | -37 |
 
-Using modified *plot.py* the positions of SV was plotted to obtain the following:
+Using modified *plot.py* the positions of SV were plotted to obtain the following:
 
-![Simulated medulloblastoma sample 100 bp median with SV](graphs/sms100medSV.jpeg)
+![Simulated medulloblastoma sample 100 bp median with SV](graphs/sms100medSV.jpeg "Simulated medulloblastoma sample 100 bp median with SV")
 
 However, I suppose that *sniffles* was not setup correctly and I might have made errors during the mapping, as the result does not look as expected.
